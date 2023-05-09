@@ -58,7 +58,7 @@ After providing "phonon.yaml" and "FORCE_SETS" (or only compact version of "phon
 You can use fcdimen -h to see more options.
 
 
-## examples
+## Examples
 
 There are several examples in the examples directory that can be used like this:
 
