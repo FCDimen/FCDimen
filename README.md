@@ -69,3 +69,7 @@ or for compact version
 ```bash
 fcdimen -p examples/ -i mp-1434.yaml
 ```
+
+## Acknowledgements
+
+Example files are adapted from [phonondb](http://phonondb.mtl.kyoto-u.ac.jp/index.html) under CC BY 4.0.
