@@ -53,7 +53,7 @@ for i in range(nat):
 
 
 def test_score():
-    fcdimlist, dimensionality1, dimensionality2 = scanner(nat, Fp, Fp2, sc, [3.0])
+    fcdimlist, dimensionality1, dimensionality2 = scanner(nat, Fp, sc, [3.0])
     scores = calc_score({'1.0': '0D', '3.0': '0D'}, 100)
 
     assert dimensionality1 == '0D'
