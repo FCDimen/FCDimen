@@ -3,7 +3,8 @@ import networkx as nx
 from ase import Atoms
 from fcdimen.functions.pbar import progressbar
 
-def doubled_Fc (natom, FC, SC):
+
+def doubled_fc(natom, FC, SC):
     """Generating doubled supercells force constants
 
     Parameters:
@@ -37,7 +38,7 @@ def doubled_Fc (natom, FC, SC):
 
     SCNew = Atoms(positions=ionsNew, cell=basisvecNew, pbc=True)
     distancesNew = SCNew.get_all_distances(mic=True, vector=True)
-    # Inital value for Maximum force in new supercell
+    # Initial value for Maximum force in new supercell
     Fmax = 0
 
     for k in progressbar(range(natomNew), "Progress: ", 40):
@@ -46,12 +47,12 @@ def doubled_Fc (natom, FC, SC):
             distances_diff = np.sum(((distancesNew[k, m, :] - distances[nk, :, :]) ** 2), axis=1)
             distances_diff = np.squeeze(distances_diff)
             mindiff = np.nonzero(distances_diff == min(distances_diff))[0][0]
-            if (min(distances_diff) < 1e-8) and (check_dist(distances[nk, mindiff, :], basisvec)==True):
+            if (min(distances_diff) < 1e-8) and (check_dist(distances[nk, mindiff, :], basisvec) is True):
                 FCNew[k, m, 0] = FC[nk, mindiff]
                 FCNew[k, m, 1] = FC[nk, mindiff]
                 FCNew[k, m, 2] = FC[nk, mindiff]
 
-            elif (check_dist(distances[nk, mindiff, :], basisvec) == False) and (Fmax < FC[nk, mindiff]):
+            elif (check_dist(distances[nk, mindiff, :], basisvec) is False) and (Fmax < FC[nk, mindiff]):
                 Fmax = FC[nk, mindiff]
     
     if (Fmax / MaxFC) > 0.2:
@@ -65,6 +66,7 @@ def doubled_Fc (natom, FC, SC):
  """)
         
     return FCNew
+
 
 def check_dist(distances, mindiff):
     """Check distances in doubled Supercell smaller
@@ -101,17 +103,17 @@ def connectivity(FC, FCNew, thresholds):
 
     Returns:
     indicesSC: list
-     list of initial Supercell clusters indices
+     generate list of initial Supercell clusters indices
     indicesSCNew: list
-     list of doubeled Supercell clusters indices
+     generate list of doubled Supercell clusters indices
     """
     # Check NetworkX version
     if int(nx.__version__.split(".")[0]) < 3:
         GraphSC = nx.from_numpy_matrix(FC >= thresholds)
-        GraphSCNew = nx.from_numpy_matrix(FCNew[:,:,0] >= thresholds)
+        GraphSCNew = nx.from_numpy_matrix(FCNew[:, :, 0] >= thresholds)
     else:
         GraphSC = nx.from_numpy_array(FC >= thresholds)
-        GraphSCNew = nx.from_numpy_array(FCNew[:,:,0] >= thresholds)
+        GraphSCNew = nx.from_numpy_array(FCNew[:, :, 0] >= thresholds)
 
     # Get the indices of the simple supercell
     indicesSC = [c for c in nx.connected_components(GraphSC)]
