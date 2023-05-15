@@ -1,0 +1,121 @@
+name:      phonon
+type:      phonon
+id:        206
+status:    done
+directory: phonon
+tasks:
+- name:      equilibrium
+  type:      structopt
+  id:        207
+  status:    done
+  directory: equilibrium
+- name:      disp-001
+  type:      electronic_structure
+  id:        14449
+  status:    done
+  directory: disp-001
+- name:      disp-002
+  type:      electronic_structure
+  id:        14450
+  status:    done
+  directory: disp-002
+- name:      disp-003
+  type:      electronic_structure
+  id:        14451
+  status:    done
+  directory: disp-003
+- name:      disp-004
+  type:      electronic_structure
+  id:        14452
+  status:    done
+  directory: disp-004
+- name:      disp-005
+  type:      electronic_structure
+  id:        14453
+  status:    done
+  directory: disp-005
+- name:      disp-006
+  type:      electronic_structure
+  id:        14454
+  status:    done
+  directory: disp-006
+- name:      disp-007
+  type:      electronic_structure
+  id:        14455
+  status:    done
+  directory: disp-007
+- name:      disp-008
+  type:      electronic_structure
+  id:        14456
+  status:    done
+  directory: disp-008
+- name:      disp-009
+  type:      electronic_structure
+  id:        14457
+  status:    done
+  directory: disp-009
+- name:      disp-010
+  type:      electronic_structure
+  id:        14458
+  status:    done
+  directory: disp-010
+lattice_tolerance: 0.100000
+stress_tolerance: 10.000000
+pressure_target: 0.000000
+force_tolerance: 0.001000
+max_increase: unset
+max_iteration: 20
+min_iteration: 1
+supercell_matrix:
+- [   2,   0,   0 ]
+- [   0,   2,   0 ]
+- [   0,   0,   2 ]
+distance: 0.010000
+lattice:
+- [     5.3979301599999996,     0.0000000000000000,     0.0000000000000000 ] # a
+- [    -2.6989650900000002,     4.6747446600000000,     0.0000000000000000 ] # b
+- [     0.0000000000000000,     0.0000000000000000,     6.5836890400000003 ] # c
+points:
+- symbol: N  # 1
+  coordinates: [  0.3333333300000000,  0.6666666700000000,  0.2500000000000000 ]
+  mass: 14.006700
+- symbol: N  # 2
+  coordinates: [  0.0000000000000000,  0.0000000000000000,  0.7500000000000000 ]
+  mass: 14.006700
+- symbol: N  # 3
+  coordinates: [  0.6666666700000000,  0.3333333300000000,  0.7500000000000000 ]
+  mass: 14.006700
+- symbol: N  # 4
+  coordinates: [  0.0000000000000000,  0.0000000000000000,  0.2500000000000000 ]
+  mass: 14.006700
+- symbol: O  # 5
+  coordinates: [  0.6666666700000000,  0.3333333300000000,  0.5770765900000000 ]
+  mass: 15.999400
+- symbol: O  # 6
+  coordinates: [  0.3333333300000000,  0.6666666700000000,  0.4229234100000000 ]
+  mass: 15.999400
+- symbol: O  # 7
+  coordinates: [  0.1351606800000000,  0.8648393200000000,  0.7500000000000000 ]
+  mass: 15.999400
+- symbol: O  # 8
+  coordinates: [  0.3333333300000000,  0.6666666700000000,  0.0770765900000000 ]
+  mass: 15.999400
+- symbol: O  # 9
+  coordinates: [  0.1351606800000000,  0.2703213500000000,  0.7500000000000000 ]
+  mass: 15.999400
+- symbol: O  # 10
+  coordinates: [  0.8648393200000000,  0.1351606800000000,  0.2500000000000000 ]
+  mass: 15.999400
+- symbol: O  # 11
+  coordinates: [  0.2703213500000000,  0.1351606800000000,  0.2500000000000000 ]
+  mass: 15.999400
+- symbol: O  # 12
+  coordinates: [  0.7296786500000000,  0.8648393200000000,  0.7500000000000000 ]
+  mass: 15.999400
+- symbol: O  # 13
+  coordinates: [  0.6666666700000000,  0.3333333300000000,  0.9229234100000000 ]
+  mass: 15.999400
+- symbol: O  # 14
+  coordinates: [  0.8648393200000000,  0.7296786500000000,  0.2500000000000000 ]
+  mass: 15.999400
+electric_total_energy:       -88.8957933000
