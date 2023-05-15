@@ -1,0 +1,97 @@
+name:      phonon
+type:      phonon
+id:        3698
+status:    done
+directory: phonon
+traverse:  restart
+tasks:
+- name:      equilibrium
+  type:      structopt
+  id:        3699
+  status:    done
+  directory: equilibrium
+  traverse:  restart
+- name:      disp-001
+  type:      electronic_structure
+  id:        15950
+  status:    done
+  directory: disp-001
+  traverse:  restart
+- name:      disp-002
+  type:      electronic_structure
+  id:        15951
+  status:    done
+  directory: disp-002
+  traverse:  restart
+- name:      disp-003
+  type:      electronic_structure
+  id:        15952
+  status:    done
+  directory: disp-003
+  traverse:  restart
+- name:      disp-004
+  type:      electronic_structure
+  id:        15953
+  status:    done
+  directory: disp-004
+  traverse:  restart
+- name:      disp-005
+  type:      electronic_structure
+  id:        15954
+  status:    done
+  directory: disp-005
+  traverse:  restart
+- name:      disp-006
+  type:      electronic_structure
+  id:        15955
+  status:    done
+  directory: disp-006
+  traverse:  restart
+- name:      disp-007
+  type:      electronic_structure
+  id:        15956
+  status:    done
+  directory: disp-007
+  traverse:  restart
+- name:      disp-008
+  type:      electronic_structure
+  id:        15957
+  status:    done
+  directory: disp-008
+  traverse:  restart
+lattice_tolerance: 0.100000
+stress_tolerance: 10.000000
+pressure_target: 0.000000
+force_tolerance: 0.001000
+max_increase: unset
+max_iteration: 10
+min_iteration: 1
+supercell_matrix:
+- [   3,   0,   0 ]
+- [   0,   3,   0 ]
+- [   0,   0,   2 ]
+distance: 0.010000
+lattice:
+- [     3.8066392599999999,     0.0000000000000000,     0.0000000000000000 ] # a
+- [     0.0000000000000000,     3.8066392599999999,     0.0000000000000000 ] # b
+- [     0.0000000000000000,     0.0000000000000000,     7.7513048900000001 ] # c
+points:
+- symbol: H  # 1
+  coordinates: [  0.5000000000000000,  0.5000000000000000,  0.0000000000000000 ]
+  mass: 1.007940
+- symbol: H  # 2
+  coordinates: [  0.0000000000000000,  0.0000000000000000,  0.0000000000000000 ]
+  mass: 1.007940
+- symbol: Ca # 3
+  coordinates: [  0.0000000000000000,  0.5000000000000000,  0.1642183100000000 ]
+  mass: 40.078000
+- symbol: Ca # 4
+  coordinates: [  0.5000000000000000,  0.0000000000000000,  0.8357816900000000 ]
+  mass: 40.078000
+- symbol: Br # 5
+  coordinates: [  0.0000000000000000,  0.5000000000000000,  0.6702237500000000 ]
+  mass: 79.904000
+- symbol: Br # 6
+  coordinates: [  0.5000000000000000,  0.0000000000000000,  0.3297762500000000 ]
+  mass: 79.904000
+electric_total_energy:       -22.7564977900
