@@ -13,6 +13,7 @@ def read_data(filename="phonon.yaml"):
 
     Returns:
     phonon: Phonopy object
+     force calculations results
     unitcell_structure: ASE Atoms object
      unitcell of loaded Phonopy object
     forceconstants: ndarray
