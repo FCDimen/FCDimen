@@ -78,8 +78,8 @@ def calc_score(dimensionalities_thresholds, maxforceconstant):
     th123d = []
     th23d = []
 
-
-    dT = {} # difference of thresholds (maximum and minimum occurrence)
+    # difference of thresholds (maximum and minimum occurrence)
+    dT = {}
     for i in dimensionalities_thresholds.keys():
             if dimensionalities_thresholds[i] == "0D":
                 th0d.append(float(i))
