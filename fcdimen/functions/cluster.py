@@ -36,8 +36,8 @@ def doubled_fc(natom, forceconstants, supercell):
     ions_doubled = np.block([[ions_doubled], [ions_doubled + basisvec[1, :]]])
     ions_doubled = np.block([[ions_doubled], [ions_doubled + basisvec[2, :]]])
 
-    SCNew = Atoms(positions=ions_doubled, cell=basisvec_doubled, pbc=True)
-    distancesNew = SCNew.get_all_distances(mic=True, vector=True)
+    supercell_doubled = Atoms(positions=ions_doubled, cell=basisvec_doubled, pbc=True)
+    distancesNew = supercell_doubled.get_all_distances(mic=True, vector=True)
     # Initial value for Maximum force in new supercell
     Fmax = 0
 
@@ -102,21 +102,21 @@ def connectivity(forceconstants, forceconstants_doubled, thresholds):
      selected threshold(s)
 
     Returns:
-    indicesSC: list
+    supercell_indices: list
      generate list of initial Supercell clusters indices
-    indicesSCNew: list
+    supercell_doubled_indices: list
      generate list of doubled Supercell clusters indices
     """
     # Check NetworkX version
     if int(nx.__version__.split(".")[0]) < 3:
-        GraphSC = nx.from_numpy_matrix(forceconstants >= thresholds)
-        GraphSCNew = nx.from_numpy_matrix(forceconstants_doubled[:, :, 0] >= thresholds)
+        supercell_graph = nx.from_numpy_matrix(forceconstants >= thresholds)
+        supercell_doubled_graph = nx.from_numpy_matrix(forceconstants_doubled[:, :, 0] >= thresholds)
     else:
-        GraphSC = nx.from_numpy_array(forceconstants >= thresholds)
-        GraphSCNew = nx.from_numpy_array(forceconstants_doubled[:, :, 0] >= thresholds)
+        supercell_graph = nx.from_numpy_array(forceconstants >= thresholds)
+        supercell_doubled_graph = nx.from_numpy_array(forceconstants_doubled[:, :, 0] >= thresholds)
 
     # Get the indices of the simple supercell
-    indicesSC = [c for c in nx.connected_components(GraphSC)]
-    indicesSCNew = [c for c in nx.connected_components(GraphSCNew)]
+    supercell_indices = [c for c in nx.connected_components(supercell_graph)]
+    supercell_doubled_indices = [c for c in nx.connected_components(supercell_doubled_graph)]
 
-    return indicesSC, indicesSCNew
+    return supercell_indices, supercell_doubled_indices
