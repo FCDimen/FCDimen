@@ -1,20 +1,19 @@
 import numpy as np
 
+
 def force_matrix(forceconstatnts):
-    """Read Force constants matrix
+    """Read Force constants matrix and prepare requirements matrices
 
     Parameters:
-
     forceconstatnts: ndarray
       array of force constants matrix
 
     Returns:
-
-    nat: Integer
+    natom: Integer
      number of atoms
-    Fp: ndarray
+    forceconstatnts_zero: ndarray
      Zero matrix with size of number of atoms
-    Fp2: ndarray
+    forceconstatnts_reshaped: ndarray
      Transpose of reshaped force constants matrix
     """
     force_mat = []
@@ -23,16 +22,16 @@ def force_matrix(forceconstatnts):
             for k in range(3):
                 force_mat.append(forceconstatnts[i][j][k])
 
-    nat = int(np.sqrt(len(force_mat) / 3))
-    w = np.reshape(np.transpose(force_mat), [3, nat, nat, 3])
-    Fp2 = np.transpose(w, [0, 1, 3, 2])
-    Fp = np.zeros((nat, nat))
+    natom = int(np.sqrt(len(force_mat) / 3))
+    w = np.reshape(np.transpose(force_mat), [3, natom, natom, 3])
+    forceconstatnts_reshaped = np.transpose(w, [0, 1, 3, 2])
+    forceconstatnts_zero = np.zeros((natom, natom))
 
-    for i in range(nat):
-        for j in range(nat):
-            Fp[i, j] = np.linalg.norm(np.squeeze(Fp2[:, i, :, j]))
+    for i in range(natom):
+        for j in range(natom):
+            forceconstatnts_zero[i, j] = np.linalg.norm(np.squeeze(forceconstatnts_reshaped[:, i, :, j]))
 
-    for i in range(nat):
-        Fp[i, i] = 0
+    for i in range(natom):
+        forceconstatnts_zero[i, i] = 0
 
-    return nat, Fp, Fp2
+    return natom, forceconstatnts_zero, forceconstatnts_reshaped
