@@ -4,56 +4,56 @@ from ase import Atoms
 from fcdimen.functions.pbar import progressbar
 
 
-def doubled_fc(natom, FC, SC):
+def doubled_fc(natom, forceconstants, supercell):
     """Generating doubled supercells force constants
 
     Parameters:
     natom: integer
      Number of atoms in the initial supercell
-    FC: ndarray
+    forceconstants: ndarray
      Force constant matrix of the initial supercell
-    SC: ASE Atoms object
+    supercell: ASE Atoms object
       Initial supercell
 
     Returns:
-    FCNew: ndarray
+    forceconstants_doubled : ndarray
      Force constant matrices array of the doubled supercell
     """
-    print('Supercell chemical formula : ' + SC.get_chemical_formula(mode='metal'))
+    print('Supercell chemical formula : ' + supercell.get_chemical_formula(mode='metal'))
     
     # Get initial Supercell properties
-    ions = SC.get_positions()
-    basisvec = SC.cell
-    distances = SC.get_all_distances(mic=True, vector=True)
-    MaxFC = max(FC.max(axis=0))
+    ions = supercell.get_positions()
+    basisvec = supercell.cell
+    distances = supercell.get_all_distances(mic=True, vector=True)
+    MaxFC = max(forceconstants.max(axis=0))
 
     # Create the doubled Supercell
-    natomNew = natom * 8
-    FCNew = np.zeros([natomNew, natomNew, 3])
-    basisvecNew = np.block([basisvec]) * 2
+    natom_doubled = natom * 8
+    forceconstants_doubled = np.zeros([natom_doubled, natom_doubled, 3])
+    basisvec_doubled = np.block([basisvec]) * 2
 
-    ionsNew = np.block([[ions], [ions + basisvec[0, :]]])
-    ionsNew = np.block([[ionsNew], [ionsNew + basisvec[1, :]]])
-    ionsNew = np.block([[ionsNew], [ionsNew + basisvec[2, :]]])
+    ions_doubled = np.block([[ions], [ions + basisvec[0, :]]])
+    ions_doubled = np.block([[ions_doubled], [ions_doubled + basisvec[1, :]]])
+    ions_doubled = np.block([[ions_doubled], [ions_doubled + basisvec[2, :]]])
 
-    SCNew = Atoms(positions=ionsNew, cell=basisvecNew, pbc=True)
+    SCNew = Atoms(positions=ions_doubled, cell=basisvec_doubled, pbc=True)
     distancesNew = SCNew.get_all_distances(mic=True, vector=True)
     # Initial value for Maximum force in new supercell
     Fmax = 0
 
-    for k in progressbar(range(natomNew), "Progress: ", 40):
+    for k in progressbar(range(natom_doubled), "Progress: ", 40):
         nk = np.mod(k, natom)
-        for m in range(natomNew):
+        for m in range(natom_doubled):
             distances_diff = np.sum(((distancesNew[k, m, :] - distances[nk, :, :]) ** 2), axis=1)
             distances_diff = np.squeeze(distances_diff)
             mindiff = np.nonzero(distances_diff == min(distances_diff))[0][0]
             if (min(distances_diff) < 1e-8) and (check_dist(distances[nk, mindiff, :], basisvec) is True):
-                FCNew[k, m, 0] = FC[nk, mindiff]
-                FCNew[k, m, 1] = FC[nk, mindiff]
-                FCNew[k, m, 2] = FC[nk, mindiff]
+                forceconstants_doubled[k, m, 0] = forceconstants[nk, mindiff]
+                forceconstants_doubled[k, m, 1] = forceconstants[nk, mindiff]
+                forceconstants_doubled[k, m, 2] = forceconstants[nk, mindiff]
 
-            elif (check_dist(distances[nk, mindiff, :], basisvec) is False) and (Fmax < FC[nk, mindiff]):
-                Fmax = FC[nk, mindiff]
+            elif (check_dist(distances[nk, mindiff, :], basisvec) is False) and (Fmax < forceconstants[nk, mindiff]):
+                Fmax = forceconstants[nk, mindiff]
     
     if (Fmax / MaxFC) > 0.2:
          print("""
@@ -65,7 +65,7 @@ def doubled_fc(natom, FC, SC):
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  """)
         
-    return FCNew
+    return forceconstants_doubled
 
 
 def check_dist(distances, mindiff):
@@ -90,13 +90,13 @@ def check_dist(distances, mindiff):
             return True
 
 
-def connectivity(FC, FCNew, thresholds):
+def connectivity(forceconstants, forceconstants_doubled, thresholds):
     """Checking connectivity of atoms
 
     Parameters:
-    FC: ndarray
+    forceconstants: ndarray
      Force constant matrix of the initial supercell
-    FCNew: ndarray
+    forceconstants_doubled : ndarray
      Force constant matrices array of the doubled supercell
     thresholds : float
      selected threshold(s)
@@ -109,11 +109,11 @@ def connectivity(FC, FCNew, thresholds):
     """
     # Check NetworkX version
     if int(nx.__version__.split(".")[0]) < 3:
-        GraphSC = nx.from_numpy_matrix(FC >= thresholds)
-        GraphSCNew = nx.from_numpy_matrix(FCNew[:, :, 0] >= thresholds)
+        GraphSC = nx.from_numpy_matrix(forceconstants >= thresholds)
+        GraphSCNew = nx.from_numpy_matrix(forceconstants_doubled[:, :, 0] >= thresholds)
     else:
-        GraphSC = nx.from_numpy_array(FC >= thresholds)
-        GraphSCNew = nx.from_numpy_array(FCNew[:, :, 0] >= thresholds)
+        GraphSC = nx.from_numpy_array(forceconstants >= thresholds)
+        GraphSCNew = nx.from_numpy_array(forceconstants_doubled[:, :, 0] >= thresholds)
 
     # Get the indices of the simple supercell
     indicesSC = [c for c in nx.connected_components(GraphSC)]
