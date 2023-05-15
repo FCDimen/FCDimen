@@ -1,67 +1,46 @@
-def calc_dimension(ind,indices):
+def calc_dimension(supercell_indices, supercell_doubled_indices):
     """Calculating dimensionality
 
     Parameters:
-
-    ind: List
-     list of index of cluster
-    indices: List
-     list of doubled clusters indexes 
+    supercell_indices: list
+     generate list of initial Supercell clusters indices
+    supercell_doubled_indices: list
+     generate list of doubled Supercell clusters indices
 
     Returns:
-
-    fcadim: String
-     Dimensionality of structure (0D, 1D, 2D, 3D or mixture of them or unknown)
+    dimensionality: String
+     Dimensionality of structure (0D, 1D, 2D, 3D, mix or unknown)
     """
+    supercell_clusters = {}
+    for i in range(len(supercell_indices)):
+        supercell_clusters[min(list(supercell_indices[i]))] = len(list(supercell_indices[i]))
 
-    c0id = {}
-    for i in range(len(ind)):
-        x = list(ind[i])
-        c0id[min(x)] = len(x)
+    supercell_doubled_clusters = {}
+    for i in range(len(supercell_doubled_indices)):
+        supercell_doubled_clusters[min(list(supercell_doubled_indices[i]))] = len(list(supercell_doubled_indices[i]))
 
-    cxid = {}
-    #for i in range(len(indices[0])):
-    for i in range(len(indices)):
-        #x = list(indices[0][i])
-        x = list(indices[i])  # it is not 3 any more
-        cxid[min(x)] = len(x)
-
-    """cyid = {}
-    for i in range(len(indices[1])):
-        x = list(indices[1][i])
-        cyid[min(x)] = len(x)
-
-    czid = {}
-    for i in range(len(indices[2])):
-        x = list(indices[2][i])
-        czid[min(x)] = len(x)"""
-
-    
-    dimenlist = []
-    for i in c0id.keys():
-        #dimenlist.append(sum([c0id[i] == cxid[i] / 2, c0id[i] == cyid[i] / 2, c0id[i] == czid[i] / 2]))
-        #dimenlist.append(sum([c0id[i] == cxid[i] / 2, c0id[i] == cxid[i] / 4, c0id[i] == cxid[i] / 8]))
-        if c0id[i] == cxid[i] / 2:
-           dimenlist.append(1)     
-        elif c0id[i] == cxid[i] / 4:
-           dimenlist.append(2)
-        elif c0id[i] == cxid[i] / 8:
-           dimenlist.append(3)
+    dimensionalities = []
+    for i in supercell_clusters.keys():
+        if supercell_clusters[i] == supercell_doubled_clusters[i] / 2:
+           dimensionalities.append(1)
+        elif supercell_clusters[i] == supercell_doubled_clusters[i] / 4:
+           dimensionalities.append(2)
+        elif supercell_clusters[i] == supercell_doubled_clusters[i] / 8:
+           dimensionalities.append(3)
         else:
-           dimenlist.append(0)
+           dimensionalities.append(0)
            
            
-    #print(dimenlist)       
-    l = sorted(list(set(dimenlist)))
-
+    # Preparing dimensionality string
+    l = sorted(list(set(dimensionalities)))
     ans = ' '
     for i in l:
         ans = ans + str(i)
 
     if ans == ' ':
-        fcadim = "Unknown"
+        dimensionality = "Unknown"
     else:
-        fcadim = ans + "D"
-        fcadim = fcadim.strip()
+        dimensionality = ans + "D"
+        dimensionality = dimensionality.strip()
         
-    return fcadim
+    return dimensionality
