@@ -52,7 +52,7 @@ def run():
 
     if args.threshold == None:
         ths = [x for x in pl if x <= maximumforce]
-        fcdimlist, dimensionality1, dimensionality2 = scanner(nat,Fp, Fp2, sc, ths)
+        fcdimlist, dimensionality1, dimensionality2 = scanner(nat,Fp, sc, ths)
         if dimensionality1 != None:
           print("Dimensionality with Class. I: {}".format(dimensionality1))
         
@@ -67,7 +67,7 @@ def run():
     else:
         assert float(args.threshold) >= 0.0, "ERROR: negative Negative threshold"
         ths = [float(args.threshold)]
-        fcdimlist, dimensionality1, dimensionality2 = scanner(nat,Fp, Fp2, sc, ths)
+        fcdimlist, dimensionality1, dimensionality2 = scanner(nat,Fp, sc, ths)
         print("Dimensionality for t = {} eV/A^2 is: {}".format(ths[0],dimensionality1))
 
 

@@ -1,59 +1,61 @@
-#from tqdm import tqdm
 from fcdimen.functions.cluster import doubled_fc, connectivity
 from fcdimen.functions.dimensionality import calc_dimension
 from fcdimen.functions.pbar import progressbar
 
 
-def scanner(nat,Fp, Fp2, sc, ths):
-    """
+def scanner(natom, forceconstants_zero_diagonal, supercell, thresholds):
+    """ Calculating dimensionality based on selected thresholds
+
     Parameters:
-        nat:  Integer
-         number of atoms
-        Fp: ndarray
-         Zero matrix with size of number of atoms
-        Fp2: ndarray
-         Transpose of reshaped force constants matrix
-        sc:  ASE Atoms object
-         supercell
-        ths: List
-         list of thresholds for scanning
+    natom:  Integer
+     number of atoms
+    forceconstants_zero_diagonal: ndarray
+     force constants matrix where diagonal elements are zero
+    forceconstants_reshaped: ndarray
+     Transpose of reshaped force constants matrix
+    supercell:  ASE Atoms object
+      supercell
+    thresholds: List
+     list of thresholds for scanning
+
     Returns:
-        fcdimlist: Dictionary
-         Dictionary of predicted dimensionality with scores
+    dimensionalities_thresholds: Dictionary
+     Predicted dimensionalities for each thresholds
+    dimensionality_class1: string
+     Predicted dimensionality with classification I
+    dimensionality_class2: string
+     Predicted dimensionality with classification II
     """
+    dimensionalities_thresholds = {}
+    forceconstants_doubled = doubled_fc(natom, forceconstants_zero_diagonal, supercell)
     
-    fcdimlist = {}
-    Fpb = doubled_fc (nat, Fp, sc)
-    
-    if len(ths) != 1:
-        ind1, indices1 = connectivity(Fp, Fpb, 0.5)
-        dimensionality1 = calc_dimension(ind1, indices1)
-        minmaximumforce = min(Fp.max(axis=0))
-        ind2, indices2 = connectivity(Fp, Fpb, (minmaximumforce-0.01))
-        dimensionality2 = calc_dimension(ind2, indices2)
-    
+    if len(thresholds) != 1:
+        ind1, indices1 = connectivity(forceconstants_zero_diagonal, forceconstants_doubled, 0.5)
+        dimensionality_class1 = calc_dimension(ind1, indices1)
+        MinFC = min(forceconstants_zero_diagonal.max(axis=0))
+        ind2, indices2 = connectivity(forceconstants_zero_diagonal, forceconstants_doubled, (MinFC - 0.01))
+        dimensionality_class2 = calc_dimension(ind2, indices2)
 
-        #for p in progressbar(ths, "Progress: ", 40):
-        for p in ths:
-            ind, indices = connectivity(Fp, Fpb, p)
+        for p in thresholds:
+            ind, indices = connectivity(forceconstants_zero_diagonal, forceconstants_doubled, p)
             dimensionality = calc_dimension(ind, indices)
-            fcdimlist[str(p)] = dimensionality
+            dimensionalities_thresholds[str(p)] = dimensionality
     else:
-        ind, indices = connectivity(Fp, Fpb, ths)
-        dimensionality1 = calc_dimension(ind, indices)
-        fcdimlist = None
-        dimensionality2 = None
+        ind, indices = connectivity(forceconstants_zero_diagonal, forceconstants_doubled, thresholds)
+        dimensionality_class1 = calc_dimension(ind, indices)
+        dimensionalities_thresholds = None
+        dimensionality_class2 = None
+
+    return dimensionalities_thresholds, dimensionality_class1, dimensionality_class2
 
 
-    return fcdimlist, dimensionality1, dimensionality2
-
-def calc_score(dim_fca, maxforce):
-    """Calculating dimensionality score
+def calc_score(dimensionalities_thresholds, maxforceconstant):
+    """Calculating dimensionality scores
 
     Parameters:
-    dim_fca: Dictionary
+    dimensionalities_thresholds: Dictionary
      calculated dimensionality of each threshold
-    maxforce: Float
+    maxforceconstant: Float
      Maximum force constant in structure
     Returns:
 
@@ -78,54 +80,52 @@ def calc_score(dim_fca, maxforce):
 
 
     dT = {} # difference of thresholds (maximum and minimum occurrence)
-    for i in dim_fca.keys():
-            if dim_fca[i] == "0D":
+    for i in dimensionalities_thresholds.keys():
+            if dimensionalities_thresholds[i] == "0D":
                 th0d.append(float(i))
 
-            if dim_fca[i] == "1D":
+            if dimensionalities_thresholds[i] == "1D":
                 th1d.append(float(i))
 
-            if dim_fca[i] == "2D":
+            if dimensionalities_thresholds[i] == "2D":
                 th2d.append(float(i))
 
-            if dim_fca[i] == "3D":
+            if dimensionalities_thresholds[i] == "3D":
                 th3d.append(float(i))
 
-            if dim_fca[i] == "01D":
+            if dimensionalities_thresholds[i] == "01D":
                 th01d.append(float(i))
 
-            if dim_fca[i] == "02D":
+            if dimensionalities_thresholds[i] == "02D":
                 th02d.append(float(i))
 
-            if dim_fca[i] == "03D":
+            if dimensionalities_thresholds[i] == "03D":
                 th03d.append(float(i))
 
-            if dim_fca[i] == "012D":
+            if dimensionalities_thresholds[i] == "012D":
                 th012d.append(float(i))
 
-            if dim_fca[i] == "013D":
+            if dimensionalities_thresholds[i] == "013D":
                 th013d.append(float(i))
 
-            if dim_fca[i] == "023D":
+            if dimensionalities_thresholds[i] == "023D":
                 th023d.append(float(i))
 
-            if dim_fca[i] == "12D":
+            if dimensionalities_thresholds[i] == "12D":
                 th12d.append(float(i))
 
-            if dim_fca[i] == "13D":
+            if dimensionalities_thresholds[i] == "13D":
                 th13d.append(float(i))
 
-            if dim_fca[i] == "123D":
+            if dimensionalities_thresholds[i] == "123D":
                 th123d.append(float(i))
 
-            if dim_fca[i] == "23D":
+            if dimensionalities_thresholds[i] == "23D":
                 th23d.append(float(i))
 
     # removing empty threshold list that has only one threshold
 
     if len(th0d) > 1:
-        # if (((max(th0d) - min(th0d))/maxforce))/2 > 0.5:
-        # if (((max(th0d) - min(th0d))/maxforce)) > 0.9:
         dT['0D'] = max(th0d) - min(th0d)
 
     if len(th1d) > 1:
@@ -170,8 +170,7 @@ def calc_score(dim_fca, maxforce):
         dT['23D'] = max(th23d) - min(th23d)
 
     #Normalize scores with Maximum force constatnt in structure
-    #dimen_score = {key: format((value/maxforce)*100, ".2f") for key, value in dT.items()}
-    dimen_score = {key: (value/maxforce) for key, value in dT.items()}
+    dimen_score = {key: (value / maxforceconstant) for key, value in dT.items()}
 
     return dimen_score
 
