@@ -34,7 +34,7 @@ source fcdimen-env/bin/activate
 Get the source code from github:
 
 ```bash
-git clone https://github.com/mbagheri20/fcdimen.git
+git clone https://github.com/FCDimen/FCDimen.git
 ```
 
 You can use following command for installing system requirements packages:
