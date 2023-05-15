@@ -1,5 +1,5 @@
 #from tqdm import tqdm
-from fcdimen.functions.cluster import doubled_Fc, connectivity
+from fcdimen.functions.cluster import doubled_fc, connectivity
 from fcdimen.functions.dimensionality import calc_dimension
 from fcdimen.functions.pbar import progressbar
 
@@ -23,7 +23,7 @@ def scanner(nat,Fp, Fp2, sc, ths):
     """
     
     fcdimlist = {}
-    Fpb = doubled_Fc (nat, Fp, sc)
+    Fpb = doubled_fc (nat, Fp, sc)
     
     if len(ths) != 1:
         ind1, indices1 = connectivity(Fp, Fpb, 0.5)
