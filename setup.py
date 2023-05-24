@@ -6,7 +6,7 @@ setup(
     name="fcdimen",
     version="0.1.0",
     description="Analyzing dimensionality of materials structure with force constants matrix",
-    author="Mohammad Bagheri",
+    author="Mohammad Bagheri, Ethan Berger, Hannu-Pekka Komsa",
     author_email="Mohammad.Bagheri@oulu.fi",
     url="https://github.com/FCDimen/",
     install_requires=["numpy","phonopy", "matplotlib", "ase", "networkx"],
@@ -20,7 +20,6 @@ setup(
     classifiers=[
           "Development Status :: 1 - Beta",
           "Intended Audience :: Science/Research",
-          "License :: OSI Approved :: Creative Commons Attribution-ShareAlike 4.0 International License",
           "Operating System :: OS Independent",
           "Programming Language :: Python :: 3.5",
           "Programming Language :: Python :: 3.6",
