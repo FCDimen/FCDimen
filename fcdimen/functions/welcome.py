@@ -12,7 +12,7 @@ def welcome_logo():
 
     print("""
  *------------------------------------------------------*
- |                FCDimen 0.1.0 (2023)                  |
+ |                FCDimen 0.2.1 (2023)                  |
  |   Developers: M. Bagheri, E. Berger & H.-P. Komsa    |
  |   Documentation : https://github.com/fcdimen         |
  *------------------------------------------------------*
