@@ -37,9 +37,9 @@ Get the source code from github:
 git clone https://github.com/FCDimen/FCDimen.git
 ```
 
-You can use following command for installing system requirements packages:
+(Optional) If you want to install system requirements packages separately use following command:
 ```bash
-cd fcdimen
+cd FCDimen
 pip install -r requirements.txt
 ```
 To install the code run this command in source files directory:
@@ -67,7 +67,7 @@ fcdimen -p examples/MoS2
 ```
 or for compact version
 ```bash
-fcdimen -p examples/ -i mp-1434.yaml
+fcdimen -p examples/ -i MoS2.yaml
 ```
 
 ## Acknowledgements
