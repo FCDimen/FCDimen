@@ -1,3 +1,6 @@
+from pkg_resources import parse_version
+import fcdimen
+
 
 # logo made by http://www.network-science.de/ascii/
 def welcome_logo():
@@ -11,9 +14,9 @@ def welcome_logo():
         |_|   \____|____/|_|_| |_| |_|\___|_| |_|""")
 
     print("""
- *------------------------------------------------------*
- |                FCDimen 0.2.1 (2023)                  |
- |   Developers: M. Bagheri, E. Berger & H.-P. Komsa    |
+ *------------------------------------------------------*""")
+    print(" |                FCDimen "+str(parse_version(fcdimen.__version__))+" (2023)                  |")
+    print(""" |   Developers: M. Bagheri, E. Berger & H.-P. Komsa    |
  |   Documentation : https://github.com/fcdimen         |
  *------------------------------------------------------*
  """)
