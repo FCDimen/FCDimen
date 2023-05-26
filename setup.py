@@ -4,7 +4,7 @@ from distutils.core import Extension, setup
 
 setup(
     name="fcdimen",
-    version="0.1.0",
+    version="0.2.1",
     description="Analyzing dimensionality of materials structure using force constants",
     author="Mohammad Bagheri, Ethan Berger, Hannu-Pekka Komsa",
     author_email="Mohammad.Bagheri@oulu.fi",
