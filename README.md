@@ -1,6 +1,6 @@
 # FCDimen
 
-Python tools for analyzing dimensionality of materials structure with force constants.
+Python tools for analyzing dimensionality of materials structure using force constants.
 
 
 ## Installation
