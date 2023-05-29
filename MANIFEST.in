@@ -1,6 +1,9 @@
 include LICENSE 
 include README.md 
 include requirements.txt
+include examples/*
+include examples/LiNbS2/*
+include examples/MoS2/*
 exclude test/test*.py
 exclude test/FORCE_SETS
 exclude text/phonon.yaml
