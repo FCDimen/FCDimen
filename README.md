@@ -41,7 +41,7 @@ git clone https://github.com/FCDimen/FCDimen.git
 cd FCDimen
 pip install -r requirements.txt
 ```
-To install the code run this command in source files directory:
+To install the code run this command in source code directory:
 
 ```bash
 pip install -e .  
