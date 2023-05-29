@@ -3,4 +3,4 @@ include README.md
 include requirements.txt
 exclude test/test*.py
 exclude test/FORCE_SETS
-exclude phonon.yaml
+exclude text/phonon.yaml
