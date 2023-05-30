@@ -11,7 +11,7 @@ setup(
     author="Mohammad Bagheri, Ethan Berger, Hannu-Pekka Komsa",
     author_email="Mohammad.Bagheri@oulu.fi",
     url="https://github.com/FCDimen/",
-    install_requires=["numpy","phonopy", "matplotlib", "ase", "networkx"],
+    install_requires=["numpy","phonopy", "ase", "networkx"],
     packages=[
         "fcdimen",
         "fcdimen.functions",

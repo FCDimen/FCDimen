@@ -7,10 +7,10 @@ Python tools for analyzing dimensionality of materials structure using force con
 
 ### system requirements
 * Python 3.X
-* Numpy
-* Phonopy
-* ASE
-* Networkx
+* Numpy >= 1.22.3
+* Phonopy >= 2.8.1
+* ASE >= 3.22.1
+* Networkx >= 2.7.1
 
 ### Normal Installation
 
