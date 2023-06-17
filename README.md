@@ -3,7 +3,7 @@
 Python tools for analyzing dimensionality of materials structure using force constants.
 
 
-## Installation
+## Installation (in progress)
 
 ### system requirements
 * Python 3.X
@@ -13,7 +13,7 @@ Python tools for analyzing dimensionality of materials structure using force con
 * Networkx >= 2.7.1
 
 ### Normal Installation
-
+Pip is not available yet.
 ```bash
 pip install fcdimen
 ```
