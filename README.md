@@ -3,7 +3,7 @@
 Python tools for analyzing dimensionality of materials structure using force constants.
 
 
-## Installation
+## Installation (in progress)
 
 ### system requirements
 * Python 3.X
@@ -13,7 +13,7 @@ Python tools for analyzing dimensionality of materials structure using force con
 * Networkx >= 2.7.1
 
 ### Normal Installation
-
+Pip is not available yet.
 ```bash
 pip install fcdimen
 ```
@@ -78,7 +78,7 @@ If you have used FCDimen, please cite the following article:
 
 - "Identification of Material Dimensionality Based on Force Constant Analysis",
 
-  Mohammad Bagheri , Ethan Berger & Hannu-Pekka Komsa, J. Phys. Chem. Lett, **14**, 33 (2023)
+  Mohammad Bagheri, Ethan Berger & Hannu-Pekka Komsa, J. Phys. Chem. Lett, **14**, 33 (2023)
 
   https://doi.org/10.1021/acs.jpclett.3c01635
 
@@ -99,3 +99,4 @@ If you have used FCDimen, please cite the following article:
 ## Acknowledgements
 
 Example files are adapted from [phonondb](http://phonondb.mtl.kyoto-u.ac.jp/index.html) under CC BY 4.0.
+
