@@ -72,6 +72,30 @@ or for compact version
 fcdimen -p examples/ -i MoS2.yaml
 ```
 
+## How to cite
+
+If you have used FCDimen, please cite the following article:
+
+- "Identification of Material Dimensionality Based on Force Constant Analysis",
+
+  Mohammad Bagheri, Ethan Berger & Hannu-Pekka Komsa, J. Phys. Chem. Lett, **14**, 33 (2023)
+
+  https://doi.org/10.1021/acs.jpclett.3c01635
+
+  ```
+  @article{FCDimen,
+     doi = {10.1021/acs.jpclett.3c01635},
+     url = {https://doi.org/10.1021/acs.jpclett.3c01635},
+     journal = {The Journal of Physical Chemistry Letters},
+     year = {2023},
+     title = {Identification of material dimensionality based on force constant analysis},
+     author = {Mohammad Bagheri and Ethan Berger and Hannu-Pekka Komsa},
+     pages = {X},
+     issue = {33},
+     volume = {14}
+  }
+  ```
+  
 ## Acknowledgements
 
 Example files are adapted from [phonondb](http://phonondb.mtl.kyoto-u.ac.jp/index.html) under CC BY 4.0.
