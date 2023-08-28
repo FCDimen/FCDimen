@@ -80,19 +80,19 @@ If you have used FCDimen, please cite the following article:
 
   Mohammad Bagheri, Ethan Berger & Hannu-Pekka Komsa, J. Phys. Chem. Lett, **14**, 33 (2023)
 
-  https://doi.org/10.1021/acs.jpclett.3c01635
+  https://doi.org/10.1021/acs.jpclett.3c01635  (Open Access)
 
   ```
   @article{FCDimen,
-     doi = {10.1021/acs.jpclett.3c01635},
-     url = {https://doi.org/10.1021/acs.jpclett.3c01635},
+     author = {Bagheri, Mohammad and Berger, Ethan and Komsa, Hannu-Pekka},
+     title = {Identification of Material Dimensionality Based on Force Constant Analysis}
      journal = {The Journal of Physical Chemistry Letters},
+     volume = {14},
+     number = {0},
+     pages = {7840-7847},
      year = {2023},
-     title = {Identification of material dimensionality based on force constant analysis},
-     author = {Mohammad Bagheri and Ethan Berger and Hannu-Pekka Komsa},
-     pages = {X},
-     issue = {33},
-     volume = {14}
+     doi = {10.1021/acs.jpclett.3c01635},
+     URL = {https://doi.org/10.1021/acs.jpclett.3c01635}
   }
   ```
   
