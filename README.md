@@ -78,7 +78,7 @@ If you have used FCDimen, please cite the following article:
 
 - "Identification of Material Dimensionality Based on Force Constant Analysis",
 
-  Mohammad Bagheri, Ethan Berger & Hannu-Pekka Komsa, J. Phys. Chem. Lett, **14**, 33 (2023)
+  Mohammad Bagheri, Ethan Berger & Hannu-Pekka Komsa, J. Phys. Chem. Lett, **14**, 35 (2023)
 
   https://doi.org/10.1021/acs.jpclett.3c01635  (Open Access)
 
@@ -88,7 +88,7 @@ If you have used FCDimen, please cite the following article:
      title = {Identification of Material Dimensionality Based on Force Constant Analysis}
      journal = {The Journal of Physical Chemistry Letters},
      volume = {14},
-     number = {0},
+     number = {35},
      pages = {7840-7847},
      year = {2023},
      doi = {10.1021/acs.jpclett.3c01635},
