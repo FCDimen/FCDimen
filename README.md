@@ -1,6 +1,6 @@
 [![PyPI](https://img.shields.io/pypi/v/fcdimen.svg)](https://pypi.python.org/pypi/fcdimen)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/fcdimen.svg?logo=python&logoColor=FFE873)](https://pypi.org/project/fcdimen/)
-[![PyPI downloads](https://img.shields.io/pypi/dm/fcdimen.svg)](https://pypistats.org/packages/fcdimen)
+[![PyPI](https://img.shields.io/pypi/dm/fcdimen.svg?maxAge=2592000)](https://pypi.python.org/pypi/fcdimen)
 
 # FCDimen
 
