@@ -18,5 +18,7 @@ def welcome_logo():
     print(" |                FCDimen "+str(parse_version(fcdimen.__version__))+" (2023)                  |")
     print(""" |   Developers: M. Bagheri, E. Berger & H.-P. Komsa    |
  |   Documentation : https://github.com/fcdimen         |
+ |   More information about method and citation:        |
+ |   https://doi.org/10.1021/acs.jpclett.3c01635        |
  *------------------------------------------------------*
  """)
