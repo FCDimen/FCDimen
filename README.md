@@ -18,7 +18,7 @@ Python tools for analyzing dimensionality of materials structure using force con
 * Networkx >= 2.7.1
 
 ### Normal Installation
-Pip is not available yet.
+
 ```bash
 pip install fcdimen
 ```
