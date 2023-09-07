@@ -5,7 +5,7 @@ from distutils.core import Extension, setup
 
 setup(
     name="fcdimen",
-    version="0.2.3",
+    version="0.2.4",
     description="Python tools for analyzing dimensionality of materials structure using force constants.",
     long_description="Visit https://github.com/FCDimen/FCDimen",
     author="Mohammad Bagheri, Ethan Berger, Hannu-Pekka Komsa",
@@ -23,8 +23,6 @@ setup(
           "License :: OSI Approved :: BSD License",
           "Intended Audience :: Science/Research",
           "Operating System :: OS Independent",
-          "Programming Language :: Python :: 3.5",
-          "Programming Language :: Python :: 3.6",
           "Programming Language :: Python :: 3.7",
           "Programming Language :: Python :: 3.8",
           "Programming Language :: Python :: 3.9",
