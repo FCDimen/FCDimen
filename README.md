@@ -1,3 +1,5 @@
+[![PyPI](https://img.shields.io/pypi/v/fcdimen.svg)](https://pypi.python.org/pypi/fcdimen)
+
 # FCDimen
 
 Python tools for analyzing dimensionality of materials structure using force constants.
