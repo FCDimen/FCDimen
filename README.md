@@ -1,7 +1,7 @@
 [![PyPI](https://img.shields.io/pypi/v/fcdimen.svg)](https://pypi.python.org/pypi/fcdimen)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/fcdimen.svg?logo=python&logoColor=FFE873)](https://pypi.org/project/fcdimen/)
-[![GitHub Actions status](https://github.com/hugovk/fcdimen/workflows/Test/badge.svg)](https://github.com/hugovk/fcdimen/actions)
-[![Licence](https://img.shields.io/github/license/hugovk/fcdimen.svg)](LICENSE.txt)
+[![GitHub Actions status](https://github.com/FCDimen/fcdimen/workflows/Test/badge.svg)](https://github.com/FCDimen/fcdimen/actions)
+[![Licence](https://img.shields.io/github/license/FCDimen/fcdimen.svg)](LICENSE.txt)
 [![PyPI](https://img.shields.io/pypi/dm/fcdimen.svg)](https://pypi.python.org/pypi/fcdimen)
 
 # FCDimen
