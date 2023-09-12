@@ -1,7 +1,7 @@
 [![PyPI](https://img.shields.io/pypi/v/fcdimen.svg)](https://pypi.python.org/pypi/fcdimen)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/fcdimen.svg?logo=python&logoColor=FFE873)](https://pypi.org/project/fcdimen/)
 [![Licence](https://img.shields.io/github/license/FCDimen/fcdimen.svg)](LICENSE.txt)
-![Static Badge](https://img.shields.io/badge/J._Phys._Chem._Lett-Bagheri_M.%2C_Berger_E._%26_Komsa_H.P.-red)(https://doi.org/10.1021/acs.jpclett.3c01635)
+[![JPCL](https://img.shields.io/badge/J._Phys._Chem._Lett-Bagheri_M.%2C_Berger_E._%26_Komsa_H.P.-red)](https://doi.org/10.1021/acs.jpclett.3c01635)
 
 # FCDimen
 
