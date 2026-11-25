@@ -1,4 +1,3 @@
-from pkg_resources import parse_version
 import fcdimen
 
 
@@ -15,7 +14,7 @@ def welcome_logo():
 
     print("""
  *------------------------------------------------------*""")
-    print(" |                FCDimen "+str(parse_version(fcdimen.__version__))+" (2023)                  |")
+    print(" |                FCDimen "+str(fcdimen.__version__)+" (2023)                  |")
     print(""" |   Developers: M. Bagheri, E. Berger & H.-P. Komsa    |
  |   Documentation : https://github.com/fcdimen         |
  |   More information about method and citation:        |
