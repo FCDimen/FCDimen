@@ -6,32 +6,25 @@ def force_matrix(forceconstants):
 
     Parameters:
     forceconstants: ndarray
-      array of force constants matrix
+      array of force constants matrix, shape (N, N, 3, 3)
 
     Returns:
     natom: Integer
      number of atoms
     forceconstants_zero_diagonal: ndarray
      force constants matrix where diagonal elements are zero
+     (Frobenius norm of each 3x3 block)
     forceconstants_reshaped: ndarray
-     Transpose of reshaped force constants matrix
+     Transpose of reshaped force constants matrix,
+     forceconstants_reshaped[b, i, a, j] = forceconstants[i, j, a, b]
     """
-    force_mat = []
-    for i in range(len(forceconstants)):
-        for j in range(len(forceconstants)):
-            for k in range(3):
-                force_mat.append(forceconstants[i][j][k])
+    forceconstants = np.asarray(forceconstants, dtype=float)
+    natom = forceconstants.shape[0]
+    # only the square (N, N) block is used, as in the original implementation
+    fc = forceconstants[:, :natom]
 
-    natom = int(np.sqrt(len(force_mat) / 3))
-    w = np.reshape(np.transpose(force_mat), [3, natom, natom, 3])
-    forceconstants_reshaped = np.transpose(w, [0, 1, 3, 2])
-    forceconstants_zero_diagonal = np.zeros((natom, natom))
-
-    for i in range(natom):
-        for j in range(natom):
-            forceconstants_zero_diagonal[i, j] = np.linalg.norm(np.squeeze(forceconstants_reshaped[:, i, :, j]))
-
-    for i in range(natom):
-        forceconstants_zero_diagonal[i, i] = 0
+    forceconstants_reshaped = np.transpose(fc, (3, 0, 2, 1))
+    forceconstants_zero_diagonal = np.sqrt(np.einsum('ijab,ijab->ij', fc, fc))
+    np.fill_diagonal(forceconstants_zero_diagonal, 0)
 
     return natom, forceconstants_zero_diagonal, forceconstants_reshaped
